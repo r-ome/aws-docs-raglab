@@ -1,0 +1,37 @@
+sources:
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html
+    title: Amazon Bedrock overview
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html
+    title: Amazon Bedrock model inference
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/inference-how.html
+    title: Amazon Bedrock inference concepts
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/inference-parameters.html
+    title: Amazon Bedrock inference parameters
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html
+    title: Amazon Bedrock foundation model parameters
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html
+    title: Amazon Bedrock Knowledge Bases overview
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/kb-how-it-works.html
+    title: Amazon Bedrock Knowledge Bases concepts
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-create.html
+    title: Amazon Bedrock Knowledge Bases setup
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-ds.html
+    title: Amazon Bedrock Knowledge Bases data sources
+    enabled: true
+  - url: https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html
+    title: Amazon S3 getting started
+    enabled: true
+  - url: https://docs.aws.amazon.com/lambda/latest/dg/welcome.html
+    title: AWS Lambda overview
+    enabled: true
+  - url: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html
+    title: Amazon DynamoDB overview
+    enabled: true
