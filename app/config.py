@@ -12,6 +12,7 @@ class Settings(BaseSettings):
 	chunk_size: int = 200
 	chunk_overlap: int = 50
 	embedding_model: str = "all-MiniLM-L6-v2"
+	chroma_path: str = "data/chroma"
  
 class SourceConfig(BaseModel):
 	url: HttpUrl
