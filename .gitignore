@@ -12,6 +12,5 @@ wheels/
 # Local config and generated data
 .env
 data/
-docs/
 AGENTS.md
 CLAUDE.md
