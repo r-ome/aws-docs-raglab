@@ -1,9 +1,11 @@
 from fastapi import APIRouter
 from app.api.schemas import AskRequest
+from app.generation.answer_service import ask as ask_question
 
 router = APIRouter(prefix="/query", tags=["query"])
 
 @router.post("/ask")
 def ask(request: AskRequest):
-	print(request)
-	return { "question": request.question }
+	result = ask_question(request.question)
+	return result
+

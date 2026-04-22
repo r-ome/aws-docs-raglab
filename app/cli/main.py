@@ -6,6 +6,7 @@ from app.config import settings
 from app.db import init_db
 from app.ingestion.fetcher import list_allowed_sources
 from app.ingestion.sync import process_source 
+from app.generation.answer_service import ask as ask_question
 
 app = typer.Typer()
 
@@ -16,7 +17,12 @@ def init():
 
 @app.command("ask")
 def ask(question: str):
-	print(question)
+	result = ask_question(question)
+	typer.echo(result["answer"])
+	typer.echo()
+	typer.echo("Sources: ")
+	for i, url in enumerate(result["sources"], start=1):
+		typer.echo(f" [{i}] {url}")
 
 @app.command("healthcheck")
 def healthcheck():

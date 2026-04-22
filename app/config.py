@@ -5,14 +5,17 @@ from pathlib import Path
 
 class Settings(BaseSettings):
 	model_config = SettingsConfigDict(env_file=".env")
-	db_path: str = "data/sqlite/raglab.db"
 	source_config_path: str = "sources/aws_sources.yaml"
+	db_path: str = "data/sqlite/raglab.db"
 	raw_data_dir: str = "data/raw"
 	normalized_data_dir: str = "data/normalized"
 	chunk_size: int = 200
 	chunk_overlap: int = 50
 	embedding_model: str = "all-MiniLM-L6-v2"
 	chroma_path: str = "data/chroma"
+	top_k: int = 5
+	ollama_model: str = "mistral"
+	llm_url: str = "http://localhost:11434/api/generate"
  
 class SourceConfig(BaseModel):
 	url: HttpUrl
