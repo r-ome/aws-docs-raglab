@@ -5,8 +5,11 @@ from sqlite3 import Error as DBError
 from app.config import settings
 from app.db import init_db
 from app.ingestion.fetcher import list_allowed_sources
-from app.ingestion.sync import process_source 
+from app.ingestion.sync import process_source
 from app.generation.answer_service import ask as ask_question
+from app.evals.runner import run_eval
+from app.evals.scoring import score_result
+from app.evals.report import print_report
 
 app = typer.Typer()
 
@@ -21,8 +24,9 @@ def ask(question: str):
 	typer.echo(result["answer"])
 	typer.echo()
 	typer.echo("Sources: ")
-	for i, url in enumerate(result["sources"], start=1):
-		typer.echo(f" [{i}] {url}")
+	for source in result["sources"]:
+		title = source.get("title") or "Source"
+		typer.echo(f" [{source['ref']}] {title}: {source['url']}")
 
 @app.command("healthcheck")
 def healthcheck():
@@ -49,10 +53,10 @@ def sync():
 	results = []
 	success = 0
 	failed = 0
-	
+
 	for source in allowed_sources:
 		current = { "status": "", "url": source.url, "ok": False, "error": None}
-		
+
 		try:
 			result = process_source(source)
 			current["ok"] = True
@@ -70,9 +74,18 @@ def sync():
 			failed += 1
 		results.append(current)
 
-		typer.echo(f"Current: {current['url']}, status: {current['status']}, error: {current['error']}")	
+		typer.echo(f"Current: {current['url']}, status: {current['status']}, error: {current['error']}")
 
 	typer.echo(f"Done. Success: {success} Failed: {failed}")
+
+@app.command("eval")
+def eval_command(
+	dataset: str = "data/eval_dataset.jsonl",
+	output: str = "data/eval_results/latest.jsonl"
+):
+	results = run_eval(dataset, output)
+	scores = [score_result(r) for r in results]
+	print_report(results, scores)
 
 if __name__ == "__main__":
 	app()

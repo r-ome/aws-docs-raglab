@@ -14,9 +14,12 @@ class Settings(BaseSettings):
 	embedding_model: str = "all-MiniLM-L6-v2"
 	chroma_path: str = "data/chroma"
 	top_k: int = 5
+	max_distance: float = 1.0
+	min_chunks_for_answer: int = 1
 	ollama_model: str = "mistral"
 	llm_url: str = "http://localhost:11434/api/generate"
- 
+	debug: bool = True
+
 class SourceConfig(BaseModel):
 	url: HttpUrl
 	title: str | None = None

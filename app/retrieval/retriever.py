@@ -28,20 +28,36 @@ def retrieve(query: str, top_k: int = settings.top_k) -> list[dict]:
 	if not documents or not documents[0]:
 		return []
 
+	doc_list = documents[0]
+	metadata_list = metadatas[0] if metadatas and metadatas[0] else []
+	distance_list = distances[0] if distances and distances[0] else []
+
 	chunks = []
-	for i, text in enumerate(documents[0]):
+	for i, text in enumerate(doc_list):
+		if not text or not text.strip():
+			continue
+
 		metadata = {}
-		if metadatas and metadatas[0] and i < len(metadatas[0]) and metadatas[0][i] is not None:
-			metadata = metadatas[0][i]
+		if i < len(metadata_list) and isinstance(metadata_list[i], dict):
+			metadata = metadata_list[i]
 
 		distance = None
-		if distances and distances[0] and i < len(distances[0]):
-			distance = distances[0][i]
+		if i < len(distance_list):
+			distance = distance_list[i]
 
 		chunks.append({
 			"text": text,
 			"metadata": metadata,
 			"distance": distance,
+			"rank": i + 1,
+			"source_url": metadata.get("url"),
+			"doc_id": metadata.get("doc_id"),
+			"version_id": metadata.get("version_id"),
+			"chunk_index": metadata.get("chunk_index")
 		})
 
+	chunks = [
+		c for c in chunks
+		if c["distance"] is None or c["distance"] <= settings.max_distance
+	]
 	return chunks

@@ -92,12 +92,26 @@ Then hit the endpoints:
 - `GET /health` — health check
 - `POST /query/ask` — ask a question
 
+### Run evals
+
+```bash
+raglab eval
+```
+
+Runs all questions from the eval dataset through the pipeline, scores the results, and prints a report.
+
 ### Other CLI commands
 
 ```bash
 raglab healthcheck    # check system health
 raglab show-config    # print current config
 raglab sources        # list configured sources
+```
+
+### Running tests
+
+```bash
+uv run pytest tests/ -v
 ```
 
 ## How incremental sync works
@@ -127,12 +141,16 @@ aws-docs-rag-lab/
 │   └── cli/                   # Typer commands
 ├── sources/
 │   └── aws_sources.yaml       # curated URL allowlist
-├── data/                      # local data (gitignored)
+├── data/                      # local generated data is gitignored
+│   ├── eval_dataset.jsonl     # tracked eval questions
 │   ├── raw/                   # raw HTML
 │   ├── normalized/            # cleaned text
 │   ├── chroma/                # vector store
 │   └── sqlite/                # metadata DB
 ├── docs/
+│   ├── architecture.md        # system design and data flow
+│   ├── tradeoffs.md           # design decisions and reasoning
+│   ├── local_setup.md         # detailed setup guide
 │   ├── project_plan.md
 │   └── current_status.md
 └── tests/
@@ -143,9 +161,9 @@ aws-docs-rag-lab/
 - [x] **Milestone 1** — Scaffold and local runtime (repo structure, config, SQLite, CLI + API entrypoints)
 - [x] **Milestone 2** — Document sync and normalization (fetcher, HTML extraction, content hashing, version tracking)
 - [x] **Milestone 3** — Chunking, embeddings, and indexing (paragraph-aware chunker, sentence-transformers, Chroma upsert/delete)
-- [ ] **Milestone 4** — Retrieval and generation (top-k retrieval, grounded prompts, Ollama generation, citations, abstention) — *in progress*
-- [ ] **Milestone 5** — Evals (25-50 question dataset, eval runner, retrieval + answer quality scoring)
-- [ ] **Milestone 6** — Polish and GitHub readiness (tests, docs, demo walkthrough, architecture notes)
+- [x] **Milestone 4** — Retrieval and generation (top-k retrieval, grounded prompts, Ollama generation, citations, abstention)
+- [x] **Milestone 5** — Evals (56-question dataset, eval runner, retrieval + answer quality scoring)
+- [x] **Milestone 6** — Polish and GitHub readiness (tests, docs, architecture notes, tradeoffs)
 
 ### Future ideas
 
@@ -157,9 +175,16 @@ aws-docs-rag-lab/
 - Docker packaging
 - Chunk-level incremental indexing
 
+## Docs
+
+- [Architecture](docs/architecture.md) — system design, data flow, package breakdown
+- [Tradeoffs](docs/tradeoffs.md) — design decisions and reasoning
+- [Local setup](docs/local_setup.md) — detailed setup and troubleshooting guide
+- [Project plan](docs/project_plan.md) — full milestone plan and data model
+
 ## Current status
 
-Milestones 1-3 are complete, and the core Milestone 4 retrieval/generation path is wired end-to-end. The `sync`, indexing, and `ask` pipelines all work. Still needed: retrieval guardrails, better citation formatting, abstention behavior, and tests. See [docs/current_status.md](docs/current_status.md) for details.
+All 6 milestones are complete. The pipeline works end-to-end: sync, indexing, retrieval, generation, and evals. See [docs/current_status.md](docs/current_status.md) for details.
 
 ## License
 

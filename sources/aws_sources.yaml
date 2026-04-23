@@ -26,6 +26,51 @@ sources:
   - url: https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-ds.html
     title: Amazon Bedrock Knowledge Bases data sources
     enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html
+    title: Amazon Bedrock Guardrails overview
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-how.html
+    title: Amazon Bedrock Guardrails how it works
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-components.html
+    title: Amazon Bedrock Guardrails components
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-use.html
+    title: Amazon Bedrock Guardrails use cases
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/agents-how.html
+    title: Amazon Bedrock Agents how it works
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management.html
+    title: Amazon Bedrock Prompt management overview
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-create.html
+    title: Amazon Bedrock Prompt management create prompts
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-view.html
+    title: Amazon Bedrock Prompt management view prompts
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/flows.html
+    title: Amazon Bedrock Flows overview
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/flows-how-it-works.html
+    title: Amazon Bedrock Flows how it works
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/flows-get-started.html
+    title: Amazon Bedrock Flows getting started
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference.html
+    title: Amazon Bedrock batch inference overview
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-data.html
+    title: Amazon Bedrock batch inference data format
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-create.html
+    title: Amazon Bedrock batch inference create jobs
+    enabled: true
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation.html
+    title: Amazon Bedrock evaluations overview
+    enabled: true
   - url: https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html
     title: Amazon S3 getting started
     enabled: true
@@ -34,4 +79,10 @@ sources:
     enabled: true
   - url: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html
     title: Amazon DynamoDB overview
+    enabled: true
+  - url: https://docs.aws.amazon.com/textract/latest/dg/what-is.html
+    title: Amazon Textract overview
+    enabled: true
+  - url: https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html
+    title: Amazon OpenSearch Service overview
     enabled: true
